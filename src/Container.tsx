@@ -1,4 +1,4 @@
-import React, { Component, CSSProperties } from 'react';
+import React, {Component, CSSProperties, ReactNode} from 'react';
 import PropTypes from 'prop-types';
 import { smoothDnD as container, ContainerOptions, SmoothDnD } from 'smooth-dnd';
 import { dropHandlers } from 'smooth-dnd';
@@ -8,7 +8,8 @@ container.wrapChild = false;
 
 interface ContainerProps extends ContainerOptions {
 	render?: (rootRef: React.RefObject<any>) => React.ReactElement;
-	style?: CSSProperties;
+  children: ReactNode;
+  style?: CSSProperties;
 }
 
 class Container extends Component<ContainerProps> {
@@ -115,7 +116,7 @@ class Container extends Component<ContainerProps> {
       );
     }
 	}
-	
+
   getContainer() {
 		return this.containerRef.current;
 	}
